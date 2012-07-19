@@ -4,7 +4,7 @@ module Chameleon
     
     def self.widget(name, &block) 
       @@widgets ||= {}
-      @@widgets[name] = Widget.new(name, &block)
+      @@widgets[name] = new(name, &block)
     end
 
     def self.find(name)
