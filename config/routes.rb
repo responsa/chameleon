@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  match "widgets/:id", :to => "widgets#show"
+  resources :widgets, :only => :show
 end
