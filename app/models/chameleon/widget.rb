@@ -1,18 +1,15 @@
 module Chameleon
   class Widget
     cattr_accessor :widgets
-    
-    def self.widget(name, &block) 
-      @@widgets ||= {}
-      @@widgets[name] = new(name, &block)
-    end
 
     def self.find(name)
-      Dir.glob(File.join("app", "widgets", "*.rb")).each { |f| load File.expand_path(f) } if Rails.env == "development"
+      Dir.glob(File.join("app", "widgets", "*.rb")).each { |f| Chameleon::DSL.new(File.expand_path(f)) } if Rails.env == "development"
       (@@widgets || {})[name.to_sym]
     end
 
     def initialize(name, &block)
+      @@widgets ||= {}
+      @@widgets[name] = self
       @name = name
       instance_eval(&block)
     end
