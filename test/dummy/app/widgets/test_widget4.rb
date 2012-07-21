@@ -1,4 +1,4 @@
-widget :test4 do
+Chameleon::Widget.new :test4 do
   auth { |controller, request, params| Account.all.detect { |a| a.api_token == controller.params[:token] } }
   type "line"
   data do |account|

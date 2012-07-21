@@ -6,7 +6,9 @@ module Chameleon
 
     def show
       @data = @widget.data.call(@auth)
-      render "#{@widget.type}.xml"
+      respond_to do |format|
+        format.xml { render "#{@widget.type}" }
+      end
     end
 
     protected

@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :widgets, :only => :show
+  match 'widgets/:id' => 'chameleon/widgets#show'
 end

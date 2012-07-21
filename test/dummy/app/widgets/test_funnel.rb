@@ -1,4 +1,4 @@
-widget :funnel do
+Chameleon::Widget.new :funnel do
   key "x"
   type "funnel"
   data do

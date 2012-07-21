@@ -1,4 +1,4 @@
-widget :rag_with_empty_values do
+Chameleon::Widget.new :rag_with_empty_values do
   key "x"
   type "rag"
   data do

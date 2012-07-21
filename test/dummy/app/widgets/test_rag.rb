@@ -1,4 +1,4 @@
-widget :rag do
+Chameleon::Widget.new :rag do
   key "x"
   type "rag"
   data do

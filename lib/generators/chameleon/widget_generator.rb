@@ -9,7 +9,7 @@ module Chameleon
     def create_widget
       key = Digest::SHA1.hexdigest("#{self.name}#{self.type}#{Time.now.to_i}#{ENV["USER"]}")
       data =<<EOF
-widget :#{self.name.underscore} do
+Chameleon::Widget.new :#{self.name.underscore} do
   key "#{key}"
   type "#{self.type}"
   data do

@@ -1,4 +1,4 @@
-widget :number_and_secondary_with_text do
+Chameleon::Widget.new :number_and_secondary_with_text do
   key "x"
   type "number_and_secondary"
   data do

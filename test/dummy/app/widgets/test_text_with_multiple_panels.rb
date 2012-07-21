@@ -1,4 +1,4 @@
-widget :text_with_multiple_panels do
+Chameleon::Widget.new :text_with_multiple_panels do
   key "x"
   type "text"
   data do

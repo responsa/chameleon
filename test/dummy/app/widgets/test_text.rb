@@ -1,4 +1,4 @@
-widget :text do
+Chameleon::Widget.new :text do
   key "x"
   type "text"
   data do

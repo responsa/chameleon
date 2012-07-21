@@ -1,4 +1,4 @@
-widget :geckometer do
+Chameleon::Widget.new :geckometer do
   key "x"
   type "geckometer"
   data do

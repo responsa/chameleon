@@ -3,7 +3,7 @@ module Chameleon
     cattr_accessor :widgets
 
     def self.find(name)
-      Dir.glob(File.join("app", "widgets", "*.rb")).each { |f| Chameleon::DSL.new(File.expand_path(f)) } if Rails.env == "development"
+      Dir.glob(File.join("app", "widgets", "*.rb")).each { |f| require File.expand_path(f) } if Rails.env == "development"
       (@@widgets || {})[name.to_sym]
     end
 

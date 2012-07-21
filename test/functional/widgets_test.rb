@@ -5,20 +5,20 @@ class WidgetsTest < ActionController::TestCase
 
   test "invalid widget" do
     ex = assert_raise(RuntimeError) do
-      get :show, :id => "blah"
+      get :show, :id => "blah", :format => 'xml'
     end
     assert_equal "Invalid widget!", ex.message
   end
 
   test "invalid key" do
     ex = assert_raise(RuntimeError) do
-      get :show, :id => "test", :key => "12345"
+      get :show, :id => "test", :key => "12345", :format => 'xml'
     end
     assert_equal "Invalid key!", ex.message
   end
 
   test "valid widget and key" do
-    get :show, :id => "test", :key => "c6fdeae2af2c327cac35abc2ccacd8619af56821"
+    get :show, :id => "test", :key => "c6fdeae2af2c327cac35abc2ccacd8619af56821", :format => 'xml'
     assert_response :ok
     assert_template "widgets/number_and_secondary"
     assert_equal 1, assigns(:data)[:value]
@@ -26,7 +26,7 @@ class WidgetsTest < ActionController::TestCase
   end
 
   test "widget with custom key parameter" do
-    get :show, :id => "test2", :token => "c6fdeae2af2c327cac35abc2ccacd8619af56821"
+    get :show, :id => "test2", :token => "c6fdeae2af2c327cac35abc2ccacd8619af56821", :format => 'xml'
     assert_response :ok
     assert_template "widgets/number_and_secondary"
     assert_equal 1, assigns(:data)[:value]
@@ -34,7 +34,7 @@ class WidgetsTest < ActionController::TestCase
   end
 
   test "widget with custom auth block" do
-    get :show, :id => "test3", :token => "987654321"
+    get :show, :id => "test3", :token => "987654321", :format => 'xml'
     assert_response :ok
     assert_template "widgets/number_and_secondary"
     assert_equal 5, assigns(:data)[:value]
@@ -42,7 +42,7 @@ class WidgetsTest < ActionController::TestCase
   end
 
   test "number and secondary widget" do
-    get :show, :id => "test3", :token => "987654321"
+    get :show, :id => "test3", :token => "987654321", :format => 'xml'
 xml =<<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
@@ -60,7 +60,7 @@ EOF
   end
 
   test "number and secondary widget with custom display text" do
-    get :show, :id => "number_and_secondary_with_text", :key => "x"
+    get :show, :id => "number_and_secondary_with_text", :key => "x", :format => 'xml'
 xml =<<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
@@ -78,7 +78,7 @@ EOF
   end
 
   test "line widget" do
-    get :show, :id => "test4", :token => "987654321"
+    get :show, :id => "test4", :token => "987654321", :format => 'xml'
 xml =<<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
@@ -103,7 +103,7 @@ EOF
   end
 
   test "pie widget" do
-    get :show, :id => "test5", :token => "987654321"
+    get :show, :id => "test5", :token => "987654321", :format => 'xml'
 xml =<<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
@@ -128,7 +128,7 @@ EOF
   end
 
   test "rag" do
-    get :show, :id => "rag", :key => "x"
+    get :show, :id => "rag", :key => "x", :format => 'xml'
 xml =<<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
@@ -150,7 +150,7 @@ EOF
   end
 
   test "rag with empty values" do
-    get :show, :id => "rag_with_empty_values", :key => "x"
+    get :show, :id => "rag_with_empty_values", :key => "x", :format => 'xml'
 xml =<<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
@@ -172,7 +172,7 @@ EOF
   end
 
   test "text" do
-    get :show, :id => "text", :key => "x"
+    get :show, :id => "text", :key => "x", :format => 'xml'
 xml =<<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
@@ -186,7 +186,7 @@ EOF
   end
 
   test "text with multiple panels" do
-    get :show, :id => "text_with_multiple_panels", :key => "x"
+    get :show, :id => "text_with_multiple_panels", :key => "x", :format => 'xml'
 xml =<<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
@@ -208,7 +208,7 @@ EOF
   end
 
   test "text with multiple panels and types" do
-    get :show, :id => "text_with_multiple_panels_and_types", :key => "x"
+    get :show, :id => "text_with_multiple_panels_and_types", :key => "x", :format => 'xml'
 xml =<<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
@@ -230,7 +230,7 @@ EOF
   end
 
   test "geckometer" do
-    get :show, :id => "geckometer", :key => "x"
+    get :show, :id => "geckometer", :key => "x", :format => 'xml'
 xml =<<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
@@ -249,7 +249,7 @@ EOF
   end
 
   test "funnel widget" do
-    get :show, :id => "funnel", :key => "x"
+    get :show, :id => "funnel", :key => "x", :format => 'xml'
 xml =<<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
