@@ -30,7 +30,7 @@ to generate a widget within "app/widgets". For example, if you want to generate 
 
 This will generate something similar to the following in "app/widgets/users_widget.rb":
 
-  widget :users do
+  Chameleon::Widget.new :users do
     key "3638c90ec12d5a59061ad7b78afcbd050e50b621"
     type "number_and_secondary"
     data do
@@ -39,7 +39,7 @@ This will generate something similar to the following in "app/widgets/users_widg
 
 To implement your widget, you simply need to alter it to return the required data - for a "number_and_secondary" type of widget, it requires a hash containing a :value, and optionally, a :previous value to compare it to (such as user count as of yesterday, for example):
 
-  widget :users do
+  Chameleon::Widget.new :users do
     key "3618c90ec02d5a57061ad7b78afcbb050e50b608"
     type "number_and_secondary"
     data do
