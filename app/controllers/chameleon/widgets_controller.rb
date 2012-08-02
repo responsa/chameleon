@@ -4,6 +4,8 @@ module Chameleon
     before_filter :validate_key
     skip_before_filter :verify_authenticity_token
 
+    caches_action :show, :expires_in => 1.hour
+
     def show
       @data = @widget.data.call(@auth)
       respond_to do |format|
