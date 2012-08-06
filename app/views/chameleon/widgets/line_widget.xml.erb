@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-  <% @data[:items].each do |item| %>
+  <% @widget.y_axis.each do |item| %>
     <item><%= item %></item>
   <% end %>
   <settings>
-    <% @data[:x_axis].each do |x| %>
+    <% @widget.x_axis.each do |x| %>
       <axisx><%= x %></axisx>
     <% end %>
-    <% @data[:y_axis].each do |y| %>
+    <% @widget.y_axis_labels.each do |y| %>
       <axisy><%= y %></axisy>
     <% end %>
-    <colour><%= @data[:colour] || "ff9900" %></colour>
+    <colour><%= @widget.colour %></colour>
   </settings>
 </root>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-  <% if @data.has_key?(:reverse) %>
+  <% if @widget.reverse %>
     <type>reverse</type>
   <% end %>
-  <% if @data.has_key?(:hide_percentage) %>
+  <% if @widget.hide_percentage %>
     <percentage>hide</percentage>
   <% end %>
-  <% @data[:items].each do |item| %>
+  <% @widget.items.each do |item| %>
     <item>
       <value><%= item[:value] %></value>
       <label><![CDATA[<%= item[:label] %>]]></label>

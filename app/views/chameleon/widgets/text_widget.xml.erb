@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-  <% @data.each do |panel| %>
+  <% @widget.items.each do |item| %>
   <item>
-    <text><![CDATA[<%= panel[:text] %>]]></text>
+    <text><![CDATA[<%= item[:text] %>]]></text>
     <type><%=
-      case panel[:type]
+      case item[:type]
         when :alert then 1
         when :info then 2
         else 0
