@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  match 'chameleon_widgets/:id' => 'chameleon/widgets#show'
+  namespace :chameleon do
+    resources :widgets, :only => :show, :defaults => { :format => 'xml' }
+  end
 end
