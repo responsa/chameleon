@@ -1,9 +1,5 @@
-Chameleon::Widget.new :text do
-  key "x"
-  type "text"
-  data do
-    [
-      { :text => "First panel text" }
-    ]
+class TextWidget < Chameleon::TextWidget
+  def items
+    [{ :text => "First panel text" }]
   end
 end

@@ -1,11 +1,13 @@
-Chameleon::Widget.new :rag do
-  key "x"
-  type "rag"
-  data do
-    {
-      :red => { :value => 5, :label => "Five" },
-      :amber => { :value => 2, :label => "Two" },
-      :green => { :value => 1, :label => "One" }
-    }
+class RagWidget < Chameleon::RagWidget
+  def red
+    { :value => 5, :label => "Five" }
+  end
+
+  def amber
+    { :value => 2, :label => "Two" }
+  end
+
+  def green
+    { :value => 1, :label => "One" }
   end
 end

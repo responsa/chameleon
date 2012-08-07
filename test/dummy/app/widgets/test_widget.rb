@@ -1,10 +1,9 @@
-Chameleon::Widget.new :test do
-  key "c6fdeae2af2c327cac35abc2ccacd8619af56821"
-  type "number_and_secondary"
-  data do
-    {
-      :value => 1,
-      :previous => 2
-    }
+class TestWidget < Chameleon::NumberAndSecondaryWidget
+  def current
+    { :value => 1 }
+  end
+
+  def previous
+    { :value => 2 }
   end
 end

@@ -1,7 +1,5 @@
-Chameleon::Widget.new :text_with_multiple_panels do
-  key "x"
-  type "text"
-  data do
+class TextWithMultiplePanelsWidget < Chameleon::TextWidget
+  def items
     [
       { :text => "First panel text" },
       { :text => "Second panel text" },

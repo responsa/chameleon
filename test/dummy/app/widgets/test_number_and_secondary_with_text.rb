@@ -1,11 +1,9 @@
-Chameleon::Widget.new :number_and_secondary_with_text do
-  key "x"
-  type "number_and_secondary"
-  data do
-    {
-      :value => 1,
-      :display => 'Display Me',
-      :previous => 2
-    }
+class NumberAndSecondaryWithTextWidget < Chameleon::NumberAndSecondaryWidget
+  def current
+    { :value => 1, :label => 'Display Me' }
+  end
+
+  def previous
+    { :value => 2}
   end
 end

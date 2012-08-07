@@ -7,13 +7,8 @@ module Chameleon
     argument :type, :type => :string, :desc => "Type of the widget", :required => true
 
     def create_widget
-      key = Digest::SHA1.hexdigest("#{self.name}#{self.type}#{Time.now.to_i}#{ENV["USER"]}")
       data =<<EOF
-Chameleon::Widget.new :#{self.name.underscore} do
-  key "#{key}"
-  type "#{self.type}"
-  data do
-  end
+class #{self.name.camelize} < Chameleon::#{self.type.camelize}Widget
 end
 EOF
       create_file("app/widgets/#{self.name.underscore}_widget.rb", data)
