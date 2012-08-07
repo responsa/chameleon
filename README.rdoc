@@ -1,6 +1,6 @@
 = Chameleon
 
-* http://github.com/ejdraper/chameleon
+* http://github.com/matteodepalo/chameleon
 
 == DESCRIPTION:
 
@@ -30,27 +30,22 @@ to generate a widget within "app/widgets". For example, if you want to generate 
 
 This will generate something similar to the following in "app/widgets/users_widget.rb":
 
-  Chameleon::Widget.new :users do
-    key "3638c90ec12d5a59061ad7b78afcbd050e50b621"
-    type "number_and_secondary"
-    data do
-    end
+  class UsersWidget < Chameleon::NumberAndSecondaryWidget
   end
 
 To implement your widget, you simply need to alter it to return the required data - for a "number_and_secondary" type of widget, it requires a hash containing a :value, and optionally, a :previous value to compare it to (such as user count as of yesterday, for example):
 
-  Chameleon::Widget.new :users do
-    key "3618c90ec02d5a57061ad7b78afcbb050e50b608"
-    type "number_and_secondary"
-    data do
-      {
-        :value => User.count,
-        :previous => User.count(:conditions => "created_at < '#{1.day.ago.to_s(:db)}'")
-      }
+  class UsersWidget < Chameleon::NumberAndSecondaryWidget
+    def current
+      { :value => User.count }
+    end
+
+    def previous
+      { :value => User.count(:conditions => "created_at < '#{1.day.ago.to_s(:db)}'") }
     end
   end
 
-You can then point Geckoboard at your widget, http://myapp/widgets/users?key=3618c90ec02d5a57061ad7b78afcbb050e50b608, and Geckoboard will then show the current user count, as well as the percentage difference compared to a day ago.
+You can then point Geckoboard at your widget, http://myapp/chameleon/widgets/users, and Geckoboard will then show the current user count, as well as the percentage difference compared to a day ago.
 
 More documentation on the settings available for the widgets, as well as the different types of widgets, is available on the wiki (http://github.com/ejdraper/chameleon/wiki).
 
